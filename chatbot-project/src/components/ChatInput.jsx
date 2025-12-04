@@ -1,4 +1,4 @@
-import { dayjs } from "dayjs";
+import dayjs from "dayjs";
 import { useState } from "react";
 import { Chatbot } from "supersimpledev";
 import SpinnerImage from "../assets/loading-spinner.gif";

@@ -1,4 +1,4 @@
-import { dayjs } from "dayjs";
+import dayjs from "dayjs";
 import RobotProfileImage from "../assets/robot.png";
 import UserProfileImage from "../assets/user.png";
 import "./ChatMessage.css";
