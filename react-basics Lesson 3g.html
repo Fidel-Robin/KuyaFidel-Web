@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <!-- Load the code for react external library -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- BABEL External library  -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function TextInput({ text, setText }) {
+        function saveTextInput(event) {
+          console.log(event.target.value);
+          setText(event.target.value);
+        }
+
+        return (
+          <>
+            <input
+              type="text"
+              placeholder="Enter a text"
+              onChange={saveTextInput}
+              value={text}
+            />
+
+            <p>Hello {text}</p>
+          </>
+        );
+      }
+
+      function ResetButton({ setText }) {
+        function resetText() {
+          setText("");
+        }
+
+        return <button onClick={resetText}>ResetButton</button>;
+      }
+
+      function ExampleButton({ setText }) {
+        function exampleText() {
+          setText("Fidel");
+        }
+
+        return <button onClick={exampleText}>Example</button>;
+      }
+
+      function App() {
+        const [text, setText] = React.useState("");
+
+        return (
+          <>
+            <TextInput text={text} setText={setText} />
+            <ResetButton setText={setText} />
+            <ExampleButton setText={setText} />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
+
+<!--11/27/2025  2:42 Exercsise 3d -->

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <!-- Load the code for react external library -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- BABEL External library  -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function ProductDetails({ product, price, discountPrice, imageSrc }) {
+        return (
+          <div>
+            <img src={imageSrc} width="150" />
+            <p>{product}</p>
+            {discountPrice ? (
+              <p>
+                <del>Price: {price}</del>
+              </p>
+            ) : (
+              <p>Price: {price}</p>
+            )}
+            {discountPrice && <p>Discount Price: {discountPrice}</p>}
+            <button>Add to cart</button>
+          </div>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <ProductDetails
+              product="Tennis Ball"
+              price="$6.00"
+              imageSrc="images/tennis-balls.png"
+            />
+            <ProductDetails
+              product="Socks"
+              price="$10.90"
+              discountPrice="$5.45"
+              imageSrc="images/cotton-socks.png"
+            />
+            <ProductDetails
+              product="Plain T-shirt"
+              price="$10.90"
+              discountPrice="$50.45"
+              imageSrc="images/plain-t-shirt.png"
+            />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
+
+<!-- continue 38:00 -->

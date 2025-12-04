@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      button {
+        background-color: rgb(15, 129, 242);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        margin-right: 8px;
+      }
+
+      input {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 6px;
+        border-width: 1px;
+      }
+
+      .btn-container {
+        background-color: rgb(44, 28, 28);
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+      }
+    </style>
+
+    <!-- Load the code for react external library -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- Time library -->
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <!-- BABEL External library  -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function CounterButton({ count, setCount, buttonRef }) {
+        function increaseCount() {
+          setCount(count + 1);
+        }
+
+        return (
+          <button ref={buttonRef} onClick={increaseCount}>
+            Clicked {count} times
+          </button>
+        );
+      }
+
+      function ResetButton({ count, setCount }) {
+        function resetCount() {
+          setCount(0);
+        }
+
+        return <button onClick={resetCount}>Reset</button>;
+      }
+
+      function AutoClickButton({ buttonRef }) {
+        function autoClick() {
+          setInterval(() => {
+            const buttonElem = buttonRef.current;
+            if (buttonElem) {
+              buttonElem.click();
+            }
+          }, 1000);
+        }
+
+        return <button onClick={autoClick}>Auto Click</button>;
+      }
+
+      function App() {
+        const [count, setCount] = React.useState(0);
+        const buttonRef = React.useRef();
+        return (
+          <>
+            <div className="btn-container">
+              <CounterButton
+                count={count}
+                setCount={setCount}
+                buttonRef={buttonRef}
+              />
+              <ResetButton count={count} setCount={setCount} />
+              <AutoClickButton buttonRef={buttonRef} />
+            </div>
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
+
+<!-- continue 3:48 -->
+<!-- Exercise: 4f -->
