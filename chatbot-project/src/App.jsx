@@ -5,32 +5,34 @@ import ChatMessages from "./components/ChatMessages.jsx";
 import "./App.css"; //loading css file
 
 function App() {
-  const [chatMessages, setChatMessages] = useState([
-    {
-      message: "hello chatbot",
-      sender: "user",
-      id: "id1",
-      time: 1736127288920,
-    },
-    {
-      message: "Hello! How can I help you?",
-      sender: "robot",
-      id: "id2",
-      time: 1736127291230,
-    },
-    {
-      message: "can you get me todays date?",
-      sender: "user",
-      id: "id3",
-      time: 1736127385356,
-    },
-    {
-      message: "Today is September 27",
-      sender: "robot",
-      id: "id4",
-      time: 1736127385500,
-    },
-  ]);
+  const [chatMessages, setChatMessages] = useState(
+    JSON.parse(localStorage.getItem("messages")) || [
+      {
+        message: "hello chatbot",
+        sender: "user",
+        id: "id1",
+        time: 1736127288920,
+      },
+      {
+        message: "Hello! How can I help you?",
+        sender: "robot",
+        id: "id2",
+        time: 1736127291230,
+      },
+      {
+        message: "can you get me todays date?",
+        sender: "user",
+        id: "id3",
+        time: 1736127385356,
+      },
+      {
+        message: "Today is September 27",
+        sender: "robot",
+        id: "id4",
+        time: 1736127385500,
+      },
+    ]
+  );
 
   useEffect(() => {
     Chatbot.addResponses({
@@ -44,6 +46,10 @@ function App() {
     // this setup code once because we only want to add these
     // extra responses once.
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("messages", JSON.stringify(chatMessages));
+  });
 
   return (
     <div className="app-container">
