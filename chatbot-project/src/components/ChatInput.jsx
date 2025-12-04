@@ -1,3 +1,4 @@
+import { dayjs } from "dayjs";
 import { useState } from "react";
 import { Chatbot } from "supersimpledev";
 import SpinnerImage from "../assets/loading-spinner.gif";
@@ -22,11 +23,17 @@ export function ChatInput({ chatMessages, setChatMessages }) {
     //save the chatMessages array into another array one by one.
     const newChatMessages = [
       ...chatMessages,
-      { message: inputText, sender: "user", id: crypto.randomUUID() },
+      {
+        message: inputText,
+        sender: "user",
+        id: crypto.randomUUID(),
+        time: dayjs().valueOf(),
+      },
       {
         message: <img src={SpinnerImage} className="loading-spinner" />,
         sender: "robot",
         id: crypto.randomUUID(),
+        time: dayjs().valueOf(),
       },
     ];
 
@@ -37,7 +44,12 @@ export function ChatInput({ chatMessages, setChatMessages }) {
     const response = await Chatbot.getResponseAsync(inputText);
     setChatMessages([
       ...newChatMessages.slice(0, newChatMessages.length - 1),
-      { message: response, sender: "robot", id: crypto.randomUUID() },
+      {
+        message: response,
+        sender: "robot",
+        id: crypto.randomUUID(),
+        time: dayjs().valueOf(),
+      },
     ]);
 
     setIsLoading(false);

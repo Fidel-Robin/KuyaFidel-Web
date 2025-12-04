@@ -23,8 +23,10 @@ function ChatMessages({ chatMessages }) {
   return (
     //"ref={chatMessagesRef}" - this let react knows which element to auto scroll
     <div className="chat-messages-container" ref={chatMessagesRef}>
-      {chatMessages.map(({ message, sender, id }) => {
-        return <ChatMessage message={message} sender={sender} key={id} />;
+      {chatMessages.map(({ message, sender, id, time }) => {
+        return (
+          <ChatMessage message={message} sender={sender} time={time} key={id} />
+        );
       })}
     </div>
   );
