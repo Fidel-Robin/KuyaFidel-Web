@@ -4,7 +4,7 @@ import "./HomePage.css";
 export function HomePage() {
   return (
     <>
-      <title>ECommerce Project</title>
+      <title>ECommerce Project | Homepage</title>
       <div className="header">
         <div className="left-section">
           <a href="/" className="header-link">
