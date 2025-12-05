@@ -38,6 +38,11 @@
   border: 1px solid white;
 }
 
+/* Using NavLink in React there will be an additon of ".active on the" */
+.header .orders-link.active {
+  text-decoration: underline;
+}
+
 .header .logo {
   height: 26px;
   margin-top: 1px;
