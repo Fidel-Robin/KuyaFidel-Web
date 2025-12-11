@@ -13,10 +13,10 @@ export function CheckoutPage({ cart }) {
 
         <div className="checkout-grid">
           <div className="order-summary">
-            {cart.map(() => {
+            {cart.map((cartItem) => {
               return (
                 <>
-                  <div className="cart-item-container">
+                  <div key={cartItem.productId} className="cart-item-container">
                     <div className="delivery-date">
                       Delivery date: Tuesday, June 21
                     </div>
